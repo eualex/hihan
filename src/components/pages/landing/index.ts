@@ -1,1 +1,1 @@
-export * from './StartGameSection/StartGameSection'
+export * from './GameSection/GameSection'

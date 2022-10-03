@@ -1,9 +1,10 @@
-import { StartGameSection } from "@/components/pages/landing";
+import { GameSection } from "@/components/pages/landing";
 
 export default function Home() {
   return (
     <>
-      <StartGameSection />
+      
+      <GameSection />
     </>
   )
 }
