@@ -1,5 +1,9 @@
+import { StartGameSection } from "@/components/pages/landing";
+
 export default function Home() {
   return (
-    <h1>hanoi</h1>
+    <>
+      <StartGameSection />
+    </>
   )
 }
