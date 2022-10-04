@@ -26,7 +26,7 @@ export default class Document extends NextDocument {
           <link rel="mask-icon" href="favicon/safari-pinned-tab.svg" /> */}
 
           <meta name="apple-mobile-web-app-title" content="Snippit" />
-          <meta name="application-name" content="Marketplace Ceuma" />
+          <meta name="application-name" content="HaHoi" />
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#37466B" />
 
