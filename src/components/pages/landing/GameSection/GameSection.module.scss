@@ -28,6 +28,11 @@
   width: 20rem;
   height: 16rem;
 
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+
   border-bottom: 4px solid black;
 
   position: relative;
@@ -78,5 +83,32 @@
   &:hover {
     filter: brightness(0.8)
   }
+}
+
+.artifact1 {
+  background-color: red;
+
+  width: 100px;
+  height: 20px;
+
+  z-index: 2;
+}
+
+.artifact2 {
+  background-color: blue;
+
+  width: 80px;
+  height: 20px;
+
+  z-index: 2;
+}
+
+.artifact3 {
+  background-color: green;
+
+  width: 60px;
+  height: 20px;
+
+  z-index: 2;
 }
 
