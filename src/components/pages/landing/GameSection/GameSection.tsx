@@ -8,7 +8,7 @@ export function GameSection() {
         <div className={styles.tower} />
         <div className={styles.tower} />
       </div>
-  
+
       <button className={styles.button}>Start Game</button>
     </section>
   )

@@ -1,9 +1,9 @@
-import { GameSection, Header } from "@/components/pages/landing";
+import { GameSection, Header } from '@/components/pages/landing'
 
 export default function Home() {
   return (
     <>
-      <Header/>
+      <Header />
       <GameSection />
     </>
   )

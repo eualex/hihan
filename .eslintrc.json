@@ -5,10 +5,12 @@
     "node": true
   },
   "extends": [
+    "next/core-web-vitals",
     "plugin:react/recommended",
-    "standard-with-typescript",
+    "standard",
     "plugin:prettier/recommended"
   ],
+  "parser": "@typescript-eslint/parser",
   "overrides": [],
   "parserOptions": {
     "ecmaVersion": "latest",
@@ -16,24 +18,8 @@
   },
   "plugins": ["react", "prettier"],
   "rules": {
-    "react/display-name": "off",
     "prettier/prettier": "error",
-    "import/no-anonymous-default-export": "off",
-    "react/prop-types": "off",
-    "multiline-ternary": "off",
-    "no-use-before-define": "off",
-    "no-new": "off",
-    "react/react-in-jsx-scope": "off",
-    "no-useless-return": "off",
-    "camelcase": "off",
-    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
-    "import/prefer-default-export": "off",
-    "react/jsx-one-expression-per-line": "off",
-    "react/jsx-props-no-spreading": "off",
-    "@typescript-eslint/camelcase": "off",
-    "@typescript-eslint/explicit-module-boundary-types": "off",
-    "no-unused-expressions": "off",
-    "import/no-duplicates": "off",
-    "indent": "off"
+    "indent": "off",
+    "react/react-in-jsx-scope": "off"
   }
 }
