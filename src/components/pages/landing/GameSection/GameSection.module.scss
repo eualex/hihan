@@ -4,15 +4,6 @@
   margin: 0 auto;
 }
 
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translate3d(-50px, -50px, 5px) scale(0.97);
-  }
-  to {
-    transform: translate3d(0, 0, 0) scale(1);
-  }
-}
 
 .towerContainer {
   width: 100%;
@@ -36,21 +27,8 @@
   border-bottom: 4px solid black;
 
   position: relative;
+
   
-  animation: fade-in 1s ease;
-  
-  &:nth-child(1) {
-    animation-delay: 0s;
-  }
-
-  &:nth-child(2) {
-    animation-delay: 0.1s;
-  }
-
-  &:nth-child(3) {
-    animation-delay: 0.2s;
-  }
-
   &::after {
 
     content: '';
@@ -63,6 +41,13 @@
     width: 4px;
     height: 100%;
   }
+}
+
+.towerGroup{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  
 }
 
 .button {
@@ -79,6 +64,7 @@
   transition: filter 0.4s ease;
 
   cursor: pointer;
+
 
   &:hover {
     filter: brightness(0.8)

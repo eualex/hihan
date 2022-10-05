@@ -80,23 +80,26 @@ export function GameSection() {
   return (
     <section className={styles.container}>
       <div className={styles.towerContainer}>
-        <div
-          className={styles.tower}
-          onDrop={e => onDrop(e, 'stackTower1')}
-          onDragOver={onDragOver}
-        >
-          {stackTower1.map((value, index) => (
-            <span
-              style={{ bottom: index * 20 + 'px' }}
-              key={`artifact${value}`}
-              id={`artifact${value}`}
-              className={styles[`artifact${value}`]}
-              onDragStart={e =>
-                onDragStart(e, value, 'stackTower1', handleStackTower1)
-              }
-              draggable={handleStackTower1.peek() === value}
-            />
-          ))}
+        <div className={styles.towerGroup}>
+          <div
+            className={styles.tower}
+            onDrop={e => onDrop(e, 'stackTower1')}
+            onDragOver={onDragOver}
+          >
+            {stackTower1.map((value, index) => (
+              <span
+                style={{ bottom: index * 20 + 'px' }}
+                key={`artifact${value}`}
+                id={`artifact${value}`}
+                className={styles[`artifact${value}`]}
+                onDragStart={e =>
+                  onDragStart(e, value, 'stackTower1', handleStackTower1)
+                }
+                draggable={handleStackTower1.peek() === value}
+              />
+            ))}
+          </div>
+          <p>Torre 1</p>
         </div>
         <div
           className={styles.tower}

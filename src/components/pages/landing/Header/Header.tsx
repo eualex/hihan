@@ -9,8 +9,8 @@ export function Header() {
             <h1>Hihan</h1>
           </div>
           <nav className={styles.nav}>
-            <a href="./login">Login</a>
-            <a href="./login">Historico</a>
+            <a href="./login">Sair</a>
+            <a href="./login">Score</a>
           </nav>
         </div>
       </div>
