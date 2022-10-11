@@ -78,12 +78,16 @@ export function GameSection() {
     e.preventDefault()
   }
 
+  async function handleReload() {
+    location.reload()
+  }
+
   return (
     <section className={styles.container}>
       <header className={styles.statisticsContainer}>
         <strong>Movimentos: {moves}</strong>
 
-        <button>Reiniciar</button>
+        <button onClick={handleReload}>Reiniciar</button>
       </header>
 
       <div className={styles.towerContainer}>

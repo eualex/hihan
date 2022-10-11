@@ -8,10 +8,10 @@ export function Header() {
           <div>
             <h1>Hihan</h1>
           </div>
-          <nav className={styles.nav}>
+          {/* <nav className={styles.nav}>
             <a href="./login">Sair</a>
             <a href="./login">Score</a>
-          </nav>
+          </nav> */}
         </div>
       </div>
     </header>
