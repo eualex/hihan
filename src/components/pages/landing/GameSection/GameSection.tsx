@@ -1,7 +1,8 @@
-import { DragEvent } from 'react'
+import { DragEvent, useState } from 'react'
 import { useStackState } from 'rooks'
 
 import styles from './GameSection.module.scss'
+import { Tower } from './Tower'
 
 type StackHandler = {
   clear: () => void
@@ -13,22 +14,20 @@ type StackHandler = {
 }
 
 export function GameSection() {
-  const [stackTower1, handleStackTower1] = useStackState<number>([1, 2, 3])
+  const [moves, setMoves] = useState(0)
+
+  const [stackTower1, handleStackTower1] = useStackState<number>([5, 6, 7])
   const [stackTower2, handleStackTower2] = useStackState<number>([])
   const [stackTower3, handleStackTower3] = useStackState<number>([])
 
   function getStackHandlerByName(stackName: string) {
-    if (stackName === 'stackTower1') {
-      return handleStackTower1
-    }
-    if (stackName === 'stackTower2') {
-      return handleStackTower2
-    }
-    if (stackName === 'stackTower3') {
-      return handleStackTower3
+    const handlers = {
+      stackTower1: handleStackTower1,
+      stackTower2: handleStackTower2,
+      stackTower3: handleStackTower3
     }
 
-    return null
+    return handlers[stackName]
   }
 
   function addToStack(
@@ -71,6 +70,8 @@ export function GameSection() {
     const targetStackHandler = getStackHandlerByName(targetStackName)
 
     addToStack(stackValue, currentStackHandler, targetStackHandler)
+
+    setMoves(prev => prev + 1)
   }
 
   function onDragOver(e: DragEvent<HTMLDivElement>) {
@@ -79,65 +80,51 @@ export function GameSection() {
 
   return (
     <section className={styles.container}>
+      <header className={styles.statisticsContainer}>
+        <strong>Movimentos: {moves}</strong>
+
+        <button>Reiniciar</button>
+      </header>
+
       <div className={styles.towerContainer}>
-        <div className={styles.towerGroup}>
-          <div
-            className={styles.tower}
-            onDrop={e => onDrop(e, 'stackTower1')}
+        <Tower.Group>
+          <Tower
+            name="stackTower1"
+            stackTower={stackTower1}
+            stackHandler={handleStackTower1}
+            onDrop={onDrop}
             onDragOver={onDragOver}
-          >
-            {stackTower1.map((value, index) => (
-              <span
-                style={{ bottom: index * 20 + 'px' }}
-                key={`artifact${value}`}
-                id={`artifact${value}`}
-                className={styles[`artifact${value}`]}
-                onDragStart={e =>
-                  onDragStart(e, value, 'stackTower1', handleStackTower1)
-                }
-                draggable={handleStackTower1.peek() === value}
-              />
-            ))}
-          </div>
-          <p>Torre 1</p>
-        </div>
-        <div
-          className={styles.tower}
-          onDrop={e => onDrop(e, 'stackTower2')}
-          onDragOver={onDragOver}
-        >
-          {stackTower2.map((value, index) => (
-            <span
-              style={{ bottom: index * 20 + 'px' }}
-              key={`artifact${value}`}
-              id={`artifact${value}`}
-              className={styles[`artifact${value}`]}
-              onDragStart={e =>
-                onDragStart(e, value, 'stackTower2', handleStackTower2)
-              }
-              draggable={handleStackTower2.peek() === value}
-            />
-          ))}
-        </div>
-        <div
-          className={styles.tower}
-          onDrop={e => onDrop(e, 'stackTower3')}
-          onDragOver={onDragOver}
-        >
-          {stackTower3.map((value, index) => (
-            <span
-              style={{ bottom: index * 20 + 'px' }}
-              key={`artifact${value}`}
-              id={`artifact${value}`}
-              className={styles[`artifact${value}`]}
-              onDragStart={e =>
-                onDragStart(e, value, 'stackTower3', handleStackTower3)
-              }
-              draggable={handleStackTower3.peek() === value}
-            />
-          ))}
-        </div>
+            onDragStart={onDragStart}
+          />
+          <Tower.Description>Torre 1</Tower.Description>
+        </Tower.Group>
+        <Tower.Group>
+          <Tower
+            name="stackTower2"
+            stackTower={stackTower2}
+            stackHandler={handleStackTower2}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            onDragStart={onDragStart}
+          />
+          <Tower.Description>Torre 2</Tower.Description>
+        </Tower.Group>
+        <Tower.Group>
+          <Tower
+            name="stackTower3"
+            stackTower={stackTower3}
+            stackHandler={handleStackTower3}
+            onDrop={onDrop}
+            onDragOver={onDragOver}
+            onDragStart={onDragStart}
+          />
+          <Tower.Description>Torre 3</Tower.Description>
+        </Tower.Group>
       </div>
+
+      {/* <footer className={styles.controlContainer}>
+        
+      </footer> */}
 
       {/* <button className={styles.button}>Start Game</button> */}
     </section>

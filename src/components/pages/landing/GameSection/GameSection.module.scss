@@ -1,16 +1,17 @@
 .container {
   width: 90%;
-  max-width: 1080px;
+  max-width: 920px;
   margin: 0 auto;
 }
 
 
 .towerContainer {
   width: 100%;
-  margin-top: 4rem;
+
+  margin-top: 10rem;
 
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   gap: 2rem;
 }
@@ -47,11 +48,17 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  
+
+  gap: 2rem;
+
+  > p {
+    color: #131313;
+    text-transform: uppercase;
+  }
 }
 
 .button {
-  border: 1px solid #d6d6d6;
+  border: none;
   background: #d5d5d5;
 
   text-transform: uppercase;
@@ -65,33 +72,34 @@
 
   cursor: pointer;
 
-
   &:hover {
     filter: brightness(0.8)
   }
 }
 
-.artifact1 {
-  background-color: red;
+.artifact5 {
+  background-color: #0c4a6e;
 
   width: 100px;
   height: 20px;
 
   z-index: 2;
 
+  border: 1px solid #000;
   position: absolute;
   left: 50%;
   bottom: 0;
   transform: translateX(-50%);
 }
 
-.artifact2 {
-  background-color: blue;
+.artifact6 {
+  background-color: #0ea5e9;
 
   width: 80px;
   height: 20px;
 
   z-index: 2;
+  border: 1px solid #000;
 
   position: absolute;
   left: 50%;
@@ -99,13 +107,14 @@
   bottom: 20px;
 }
 
-.artifact3 {
-  background-color: green;
+.artifact7 {
+  background-color: #bae6fd;
 
   width: 60px;
   height: 20px;
 
   z-index: 2;
+  border: 1px solid #000;
 
   position: absolute;
   left: 50%;
@@ -113,3 +122,91 @@
   bottom: 40px;
 }
 
+.statisticsContainer {
+  width: 100%;
+  margin-top: 5rem;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  strong {
+    text-transform: uppercase;
+  }
+
+  button {
+    text-decoration: none;
+    color: #27272a;
+    font-size: 15px;
+    border: none;
+    background-color: #38bdf8;
+  
+    text-transform: uppercase;
+  
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+  
+    font-family: Sora, sans-serif;
+    font-size: 1.7rem;
+    transition: filter 0.4s ease;
+  
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.8)
+    }
+  }
+}
+
+.controlContainer {
+  margin-top: 5rem;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+
+  button {
+    text-decoration: none;
+    color: #27272a;
+    font-size: 15px;
+    border: none;
+    background-color: #38bdf8;
+  
+    text-transform: uppercase;
+  
+    padding: 10px 15px;
+    margin-left: 5px;
+    border-radius: 5px;
+  
+    font-family: Sora, sans-serif;
+    font-size: 1.7rem;
+    transition: filter 0.4s ease;
+  
+    cursor: pointer;
+
+    &:hover {
+      filter: brightness(0.8)
+    }
+  }
+
+  select {
+    // appearance: none;
+    background-color: transparent;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 10px 25px;
+    margin: 0;
+    width: 100%;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+    outline: none;
+    position: relative;
+
+    &::-ms-expand {
+      display: none;
+    }
+  }
+}

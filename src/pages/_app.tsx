@@ -1,9 +1,20 @@
-import { AppProps } from 'next/app'
+import type { AppProps } from 'next/app'
+import { SessionProvider } from 'next-auth/react'
+import { Session } from 'next-auth'
 
 import '@/styles/global.scss'
 
-function MyApp({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+function MyApp({
+  Component,
+  pageProps: { session, ...pageProps }
+}: AppProps<{
+  session: Session
+}>) {
+  return (
+    <SessionProvider session={session} basePath="/api/auth/callback">
+      <Component {...pageProps} />
+    </SessionProvider>
+  )
 }
 
 export default MyApp

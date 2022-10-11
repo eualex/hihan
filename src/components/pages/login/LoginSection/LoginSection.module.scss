@@ -1,0 +1,35 @@
+.loginSection {
+  width: 100vw;
+  height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loginButton {
+  text-decoration: none;
+  color: #27272a;
+  font-size: 15px;
+  border: none;
+  background-color: #38bdf8;
+
+  display: flex;
+  gap: 1rem;
+
+  // text-transform: uppercase;
+
+  padding: 10px 15px;
+  margin-left: 5px;
+  border-radius: 5px;
+
+  font-family: Sora, sans-serif;
+  font-size: 1.7rem;
+  transition: filter 0.4s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+}
