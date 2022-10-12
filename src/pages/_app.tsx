@@ -11,7 +11,7 @@ function MyApp({
   session: Session
 }>) {
   return (
-    <SessionProvider session={session} basePath="/api/auth/callback">
+    <SessionProvider session={session}>
       <Component {...pageProps} />
     </SessionProvider>
   )

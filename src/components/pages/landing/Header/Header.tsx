@@ -1,3 +1,5 @@
+import { signOut } from 'next-auth/react'
+
 import styles from './Header.module.scss'
 
 export function Header() {
@@ -8,10 +10,12 @@ export function Header() {
           <div>
             <h1>Hihan</h1>
           </div>
-          {/* <nav className={styles.nav}>
-            <a href="./login">Sair</a>
-            <a href="./login">Score</a>
-          </nav> */}
+          <nav className={styles.nav}>
+            <a href="./login">SCORE</a>
+            <button className={styles.signout} onClick={() => signOut()}>
+              SAIR
+            </button>
+          </nav>
         </div>
       </div>
     </header>

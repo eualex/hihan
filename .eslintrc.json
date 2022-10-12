@@ -20,6 +20,7 @@
   "rules": {
     "prettier/prettier": "error",
     "indent": "off",
-    "react/react-in-jsx-scope": "off"
+    "react/react-in-jsx-scope": "off",
+    "camelcase": "off"
   }
 }

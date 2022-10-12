@@ -1,3 +1,4 @@
+import { useSession } from 'next-auth/react'
 import { DragEvent, useState } from 'react'
 import { useStackState } from 'rooks'
 
@@ -14,6 +15,10 @@ type StackHandler = {
 }
 
 export function GameSection() {
+  const {
+    data: { user }
+  } = useSession()
+
   const [moves, setMoves] = useState(0)
 
   const [stackTower1, handleStackTower1] = useStackState<number>([5, 6, 7])
@@ -85,7 +90,10 @@ export function GameSection() {
   return (
     <section className={styles.container}>
       <header className={styles.statisticsContainer}>
-        <strong>Movimentos: {moves}</strong>
+        <div>
+          <h1>Olá, {user?.name}</h1>
+          <strong>Movimentos: {moves}</strong>
+        </div>
 
         <button onClick={handleReload}>Reiniciar</button>
       </header>
