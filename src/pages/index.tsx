@@ -3,6 +3,7 @@ import { GetServerSideProps } from 'next'
 import { unstable_getServerSession } from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
+import { Header } from '@/components/shared/layout'
 import * as Page from '@/components/pages/landing'
 
 export default function Home() {
@@ -10,7 +11,7 @@ export default function Home() {
 
   return (
     <>
-      <Page.Header />
+      <Header />
       <Page.Hero>
         {isStarted ? (
           <Page.Hero.Button onClick={() => setIsStarted(false)}>
