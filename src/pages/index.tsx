@@ -1,14 +1,28 @@
+import { useState } from 'react'
 import { GetServerSideProps } from 'next'
 import { unstable_getServerSession } from 'next-auth/next'
 import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
-import { GameSection, Header } from '@/components/pages/landing'
+import * as Page from '@/components/pages/landing'
 
 export default function Home() {
+  const [isStarted, setIsStarted] = useState(false)
+
   return (
     <>
-      <Header />
-      <GameSection />
+      <Page.Header />
+      <Page.Hero>
+        {isStarted ? (
+          <Page.Hero.Button onClick={() => setIsStarted(false)}>
+            Fechar
+          </Page.Hero.Button>
+        ) : (
+          <Page.Hero.Button onClick={() => setIsStarted(true)}>
+            Iniciar
+          </Page.Hero.Button>
+        )}
+      </Page.Hero>
+      {isStarted && <Page.GameSection />}
     </>
   )
 }

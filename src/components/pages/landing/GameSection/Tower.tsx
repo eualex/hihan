@@ -37,7 +37,7 @@ export function Tower(props: TowerProps) {
     >
       {stackTower.map((value, index) => (
         <span
-          style={{ bottom: index * 20 + 'px' }}
+          // style={{ bottom: index * 20 + 'px' }}
           key={`artifact${value}`}
           id={`artifact${value}`}
           className={styles[`artifact${value}`]}

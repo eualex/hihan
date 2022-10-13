@@ -18,20 +18,14 @@
 }
 
 .nav  {
+  display: flex;
+  gap: 1.5rem;
+  align-items: center;
+
   a {
     text-decoration: none;
     color: #27272a;
-    font-size: 15px;
-  
-    padding: 10px 15px;
-    margin-left: 5px;
-    border-radius: 5px;
-  
-    font-family: Sora, sans-serif;
     font-size: 1.5rem;
-    transition: filter 0.4s ease;
-  
-    cursor: pointer;
   
     &:hover {
       text-decoration: underline;
@@ -44,13 +38,21 @@
   border: none;
 
   color: #f36565;
-  font-size: 1.7rem;
-
-  padding: .5rem 1rem;
+  font-size: 1.5rem;
 
   &:hover {
-    filter: brightness(0.8);
+    text-decoration: underline;
     cursor: pointer;
+  }
+}
+
+.logo {
+  a {
+    text-decoration: none;
+    color: #000;
+    font-size: 3rem;
+    font-family: Sora, sans-serif;
+    font-weight: 900;
   }
 }
 

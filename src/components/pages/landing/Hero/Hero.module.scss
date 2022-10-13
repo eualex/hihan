@@ -1,0 +1,35 @@
+.hero {
+  width: 90%;
+  max-width: 920px;
+  margin: 5rem auto 0;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  p {
+    color: #52525b;
+  }
+}
+
+.button {
+  text-decoration: none;
+  color: #27272a;
+  font-size: 15px;
+  border: none;
+  background-color: #38bdf8;
+
+  padding: 10px 15px;
+  margin-left: 5px;
+  border-radius: 5px;
+
+  font-family: Sora, sans-serif;
+  font-size: 1.7rem;
+  transition: filter 0.4s ease;
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.8)
+  }
+}

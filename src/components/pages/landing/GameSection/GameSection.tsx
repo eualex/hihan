@@ -1,5 +1,5 @@
 import { useSession } from 'next-auth/react'
-import { DragEvent, useState } from 'react'
+import { ChangeEvent, DragEvent, useState } from 'react'
 import { useStackState } from 'rooks'
 
 import styles from './GameSection.module.scss'
@@ -15,13 +15,9 @@ type StackHandler = {
 }
 
 export function GameSection() {
-  const {
-    data: { user }
-  } = useSession()
-
   const [moves, setMoves] = useState(0)
 
-  const [stackTower1, handleStackTower1] = useStackState<number>([5, 6, 7])
+  const [stackTower1, handleStackTower1] = useStackState<number>([1, 2, 3])
   const [stackTower2, handleStackTower2] = useStackState<number>([])
   const [stackTower3, handleStackTower3] = useStackState<number>([])
 
@@ -83,21 +79,22 @@ export function GameSection() {
     e.preventDefault()
   }
 
-  async function handleReload() {
-    location.reload()
+  function handleChangeDisks(e: ChangeEvent<HTMLSelectElement>) {
+    const value = Number(e.target.value)
+
+    if (handleStackTower1.length === 3 && !stackTower1.includes(value)) {
+      Array.from({ length: value }).forEach((_, index) => {
+        if (!stackTower1.includes(index + 1)) {
+          handleStackTower1.push(index + 1)
+        }
+      })
+    } else {
+      alert('Ihhh, vai dar não')
+    }
   }
 
   return (
     <section className={styles.container}>
-      <header className={styles.statisticsContainer}>
-        <div>
-          <h1>Olá, {user?.name}</h1>
-          <strong>Movimentos: {moves}</strong>
-        </div>
-
-        <button onClick={handleReload}>Reiniciar</button>
-      </header>
-
       <div className={styles.towerContainer}>
         <Tower.Group>
           <Tower
@@ -134,11 +131,19 @@ export function GameSection() {
         </Tower.Group>
       </div>
 
-      {/* <footer className={styles.controlContainer}>
-        
-      </footer> */}
-
-      {/* <button className={styles.button}>Start Game</button> */}
+      <footer className={styles.controlContainer}>
+        <fieldset>
+          <label htmlFor="game_levels">Nª de discos</label>
+          <select id="game_levels" onChange={handleChangeDisks}>
+            <option value="" disabled hidden></option>
+            <option value="7">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+          </select>
+        </fieldset>
+      </footer>
     </section>
   )
 }
