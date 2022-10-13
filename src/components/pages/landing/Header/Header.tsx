@@ -15,7 +15,7 @@ export function Header() {
           </div>
           <nav className={styles.nav}>
             <a href="./score">SCORE</a>
-            <a href="./">COMO RESOLVER</a>
+            <a href="./help">COMO RESOLVER</a>
             <button className={styles.signout} onClick={() => signOut()}>
               SAIR
             </button>
