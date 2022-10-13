@@ -88,6 +88,7 @@ export function GameSection({ onGameEnd }: Props) {
 
     if (!handleStackTower2.isEmpty() || !handleStackTower3.isEmpty()) {
       alert('Calma aí, rei!')
+      return false
     }
 
     const values = Array.from({ length: value })
