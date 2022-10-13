@@ -1,16 +1,29 @@
-import { ChangeEvent, DragEvent } from 'react'
+import { ChangeEvent, DragEvent, useEffect, useState } from 'react'
 import { useStack, StackHandler } from './useStack'
 
 import { Tower } from './Tower'
 
 import styles from './GameSection.module.scss'
 
+// type Props = {
+//   onGameEnd: (moves: number, minimalMovements: number) => void
+// }
+
 export function GameSection() {
-  // const [moves, setMoves] = useState(0)
+  const [moves, setMoves] = useState(0)
+  const [disks, setDisks] = useState(3)
 
   const [stackTower1, handleStackTower1] = useStack<number>([1, 2, 3])
   const [stackTower2, handleStackTower2] = useStack<number>([])
   const [stackTower3, handleStackTower3] = useStack<number>([])
+
+  const minimalMovements = 2 ** disks - 1
+
+  useEffect(() => {
+    if (stackTower3.length === disks) {
+      alert('Acabouuuuu')
+    }
+  }, [stackTower3, disks])
 
   function getStackHandlerByName(stackName: string) {
     const handlers = {
@@ -33,6 +46,8 @@ export function GameSection() {
       currentStackHandler.pop()
 
       targetStackHandler.push(value)
+
+      setMoves(prev => prev + 1)
     }
   }
 
@@ -62,8 +77,6 @@ export function GameSection() {
     const targetStackHandler = getStackHandlerByName(targetStackName)
 
     addToStack(stackValue, currentStackHandler, targetStackHandler)
-
-    // setMoves(prev => prev + 1)
   }
 
   function onDragOver(e: DragEvent<HTMLDivElement>) {
@@ -86,10 +99,23 @@ export function GameSection() {
     handleStackTower1.length < value
       ? handleStackTower1.setList(prev => [...prev, ...values])
       : handleStackTower1.setList(prev => prev.filter(v => v <= value))
+
+    setDisks(value)
   }
 
   return (
     <section className={styles.container}>
+      <div className={styles.movesContainer}>
+        <h3
+          className={
+            moves <= minimalMovements ? styles.greenText : styles.redText
+          }
+        >
+          Movimentos: {moves}
+        </h3>
+        <p>Movimentos mínimos: {minimalMovements}</p>
+      </div>
+
       <div className={styles.towerContainer}>
         <Tower.Group>
           <Tower
@@ -130,8 +156,7 @@ export function GameSection() {
         <fieldset>
           <label htmlFor="game_levels">Discos:</label>
           <div>
-            <select id="game_levels" onChange={handleChangeDisks}>
-              <option value="" disabled hidden></option>
+            <select id="game_levels" onChange={handleChangeDisks} value={disks}>
               <option value="3">3</option>
               <option value="4">4</option>
               <option value="5">5</option>

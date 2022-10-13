@@ -7,7 +7,7 @@
 .towerContainer {
   width: 100%;
 
-  margin-top: 10rem;
+  margin-top: 7rem;
 
   display: flex;
   justify-content: space-between;
@@ -64,10 +64,6 @@
   z-index: 2;
 
   border: 1px solid var(--gray-800);
-  // position: absolute;
-  // left: 50%;
-  // bottom: 0;
-  // transform: translateX(-50%);
 }
 
 .artifact2 {
@@ -78,11 +74,6 @@
 
   z-index: 2;
   border: 1px solid var(--gray-800);
-
-  // position: absolute;
-  // left: 50%;
-  // transform: translateX(-50%);
-  // bottom: 20px;
 }
 
 .artifact3 {
@@ -216,4 +207,24 @@
       border-top: 7px solid var(--gray-200);
     }
   }
+}
+
+.movesContainer {
+  margin: 2rem 0;
+
+  p {
+    color: var(--gray-300);
+  }
+}
+
+.moves {
+  color: var(--gray-200);
+}
+
+.greenText {
+  color: var(--green-400);
+}
+
+.redText {
+  color: var(--red-400);
 }
