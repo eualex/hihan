@@ -8,6 +8,9 @@ import * as Page from '@/components/pages/landing'
 
 export default function Home() {
   const [isStarted, setIsStarted] = useState(false)
+  const [isGameEnd, setIsGameEnd] = useState(false)
+  const [moves, setMoves] = useState(0)
+  const [minimalMoves, setMinimalMoves] = useState(0)
 
   return (
     <>
@@ -18,12 +21,30 @@ export default function Home() {
             Fechar
           </Page.Hero.Button>
         ) : (
-          <Page.Hero.Button onClick={() => setIsStarted(true)}>
+          <Page.Hero.Button
+            onClick={() => {
+              setIsStarted(true)
+              setIsGameEnd(false)
+            }}
+          >
             Iniciar
           </Page.Hero.Button>
         )}
       </Page.Hero>
-      {isStarted && <Page.GameSection />}
+      {isStarted && !isGameEnd && (
+        <Page.GameSection
+          onGameEnd={(gameMoves, gameMinimalMoves) => {
+            setIsGameEnd(true)
+            setIsStarted(false)
+            setMoves(gameMoves)
+            setMinimalMoves(gameMinimalMoves)
+          }}
+        />
+      )}
+
+      {!isStarted && isGameEnd && (
+        <Page.EndGameSection minimalMoves={minimalMoves} moves={moves} />
+      )}
     </>
   )
 }

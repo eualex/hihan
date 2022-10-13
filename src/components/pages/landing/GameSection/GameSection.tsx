@@ -5,11 +5,11 @@ import { Tower } from './Tower'
 
 import styles from './GameSection.module.scss'
 
-// type Props = {
-//   onGameEnd: (moves: number, minimalMovements: number) => void
-// }
+type Props = {
+  onGameEnd: (moves: number, minimalMovements: number) => void
+}
 
-export function GameSection() {
+export function GameSection({ onGameEnd }: Props) {
   const [moves, setMoves] = useState(0)
   const [disks, setDisks] = useState(3)
 
@@ -21,9 +21,9 @@ export function GameSection() {
 
   useEffect(() => {
     if (stackTower3.length === disks) {
-      alert('Acabouuuuu')
+      if (onGameEnd) onGameEnd(moves, minimalMovements)
     }
-  }, [stackTower3, disks])
+  }, [stackTower3, disks, onGameEnd, moves, minimalMovements])
 
   function getStackHandlerByName(stackName: string) {
     const handlers = {
