@@ -3,14 +3,12 @@ import { HTMLAttributes, PropsWithChildren } from 'react'
 import styles from './Hero.module.scss'
 
 export function Hero({ children }: PropsWithChildren) {
-  const {
-    data: { user }
-  } = useSession()
+  const { data } = useSession()
 
   return (
     <header className={styles.hero}>
       <div>
-        <h3>Olá, {user?.name}</h3>
+        <h3>Olá, {data?.user?.name}</h3>
         <p>Bom jogo!</p>
       </div>
 

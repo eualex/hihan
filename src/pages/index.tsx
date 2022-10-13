@@ -1,16 +1,22 @@
 import { useState } from 'react'
-import { GetServerSideProps } from 'next'
-import { unstable_getServerSession } from 'next-auth/next'
-import { authOptions } from '@/pages/api/auth/[...nextauth]'
 
 import { Header } from '@/components/shared/layout'
 import * as Page from '@/components/pages/landing'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/router'
 
 export default function Home() {
+  const { status } = useSession()
+  const { push } = useRouter()
+
   const [isStarted, setIsStarted] = useState(false)
   const [isGameEnd, setIsGameEnd] = useState(false)
   const [moves, setMoves] = useState(0)
   const [minimalMoves, setMinimalMoves] = useState(0)
+
+  if (status === 'unauthenticated') {
+    push('/login')
+  }
 
   return (
     <>
@@ -47,23 +53,4 @@ export default function Home() {
       )}
     </>
   )
-}
-
-export const getServerSideProps: GetServerSideProps = async ctx => {
-  const session = await unstable_getServerSession(ctx.req, ctx.res, authOptions)
-
-  if (!session) {
-    return {
-      redirect: {
-        destination: '/login',
-        permanent: false
-      }
-    }
-  }
-
-  return {
-    props: {
-      session
-    }
-  }
 }
