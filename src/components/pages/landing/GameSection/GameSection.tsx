@@ -1,25 +1,16 @@
-import { useSession } from 'next-auth/react'
-import { ChangeEvent, DragEvent, useState } from 'react'
-import { useStackState } from 'rooks'
+import { ChangeEvent, DragEvent } from 'react'
+import { useStack, StackHandler } from './useStack'
 
-import styles from './GameSection.module.scss'
 import { Tower } from './Tower'
 
-type StackHandler = {
-  clear: () => void
-  isEmpty: () => boolean
-  length: number
-  peek: () => number
-  pop: () => number
-  push: (item: number) => number
-}
+import styles from './GameSection.module.scss'
 
 export function GameSection() {
-  const [moves, setMoves] = useState(0)
+  // const [moves, setMoves] = useState(0)
 
-  const [stackTower1, handleStackTower1] = useStackState<number>([1, 2, 3])
-  const [stackTower2, handleStackTower2] = useStackState<number>([])
-  const [stackTower3, handleStackTower3] = useStackState<number>([])
+  const [stackTower1, handleStackTower1] = useStack<number>([1, 2, 3])
+  const [stackTower2, handleStackTower2] = useStack<number>([])
+  const [stackTower3, handleStackTower3] = useStack<number>([])
 
   function getStackHandlerByName(stackName: string) {
     const handlers = {
@@ -33,8 +24,8 @@ export function GameSection() {
 
   function addToStack(
     value: number,
-    currentStackHandler: StackHandler,
-    targetStackHandler: StackHandler
+    currentStackHandler: StackHandler<number>,
+    targetStackHandler: StackHandler<number>
   ) {
     const lastValue = targetStackHandler.peek()
 
@@ -49,7 +40,7 @@ export function GameSection() {
     e: DragEvent<HTMLSpanElement>,
     stackValue: number,
     currentStackName: string,
-    stackHandler: StackHandler
+    stackHandler: StackHandler<number>
   ) {
     const isDraggable = stackHandler.peek() === stackValue
 
@@ -72,7 +63,7 @@ export function GameSection() {
 
     addToStack(stackValue, currentStackHandler, targetStackHandler)
 
-    setMoves(prev => prev + 1)
+    // setMoves(prev => prev + 1)
   }
 
   function onDragOver(e: DragEvent<HTMLDivElement>) {
@@ -82,15 +73,19 @@ export function GameSection() {
   function handleChangeDisks(e: ChangeEvent<HTMLSelectElement>) {
     const value = Number(e.target.value)
 
-    if (handleStackTower1.length === 3 && !stackTower1.includes(value)) {
-      Array.from({ length: value }).forEach((_, index) => {
-        if (!stackTower1.includes(index + 1)) {
-          handleStackTower1.push(index + 1)
-        }
-      })
-    } else {
-      alert('Ihhh, vai dar não')
+    if (!handleStackTower2.isEmpty() || !handleStackTower3.isEmpty()) {
+      alert('Calma aí, rei!')
     }
+
+    const values = Array.from({ length: value })
+      .map((_, index) => {
+        return !stackTower1.includes(index + 1) ? index + 1 : null
+      })
+      .filter(v => !!v)
+
+    handleStackTower1.length < value
+      ? handleStackTower1.setList(prev => [...prev, ...values])
+      : handleStackTower1.setList(prev => prev.filter(v => v <= value))
   }
 
   return (
@@ -133,15 +128,17 @@ export function GameSection() {
 
       <footer className={styles.controlContainer}>
         <fieldset>
-          <label htmlFor="game_levels">Nª de discos</label>
-          <select id="game_levels" onChange={handleChangeDisks}>
-            <option value="" disabled hidden></option>
-            <option value="7">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-            <option value="6">6</option>
-            <option value="7">7</option>
-          </select>
+          <label htmlFor="game_levels">Discos:</label>
+          <div>
+            <select id="game_levels" onChange={handleChangeDisks}>
+              <option value="" disabled hidden></option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+              <option value="7">7</option>
+            </select>
+          </div>
         </fieldset>
       </footer>
     </section>

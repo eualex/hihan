@@ -7,8 +7,12 @@
   justify-content: space-between;
   align-items: flex-start;
 
+  h3 {
+    color: var(--gray-200);
+  }
+
   p {
-    color: #52525b;
+    color: var(--gray-300);
   }
 }
 

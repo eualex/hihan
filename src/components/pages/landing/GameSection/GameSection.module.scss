@@ -4,7 +4,6 @@
   margin: 0 auto;
 }
 
-
 .towerContainer {
   width: 100%;
 
@@ -25,7 +24,7 @@
   justify-content: flex-start;
   align-items: center;
 
-  border-bottom: 4px solid black;
+  border-bottom: 4px solid var(--zinc-500);
 
   position: relative;
 
@@ -36,13 +35,13 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%);
-    background: black;
+    background: var(--zinc-500);
     width: 4px;
     height: 100%;
   }
 }
 
-.towerGroup{
+.towerGroup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -50,41 +49,21 @@
   gap: 2rem;
 
   > p {
-    color: #131313;
+    color: var(--gray-300);
     text-transform: uppercase;
     user-select: none;
   }
 }
 
-.button {
-  border: none;
-  background: #d5d5d5;
-
-  text-transform: uppercase;
-
-  padding: 10px 15px;
-  border-radius: 10px;
-
-  font-family: Sora, sans-serif;
-  font-size: 1.7rem;
-  transition: filter 0.4s ease;
-
-  cursor: pointer;
-
-  &:hover {
-    filter: brightness(0.8)
-  }
-}
-
 .artifact1 {
-  background-color: #0c4a6e;
+  background-color: var(--rose-400);
 
   width: 170px;
   height: 20px;
 
   z-index: 2;
 
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
   // position: absolute;
   // left: 50%;
   // bottom: 0;
@@ -92,13 +71,13 @@
 }
 
 .artifact2 {
-  background-color: #0ea5e9;
+  background-color: var(--rose-500);
 
   width: 150px;
   height: 20px;
 
   z-index: 2;
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
 
   // position: absolute;
   // left: 50%;
@@ -107,13 +86,13 @@
 }
 
 .artifact3 {
-  background-color: #bae6fd;
+  background-color: var(--rose-600);
 
   width: 130px;
   height: 20px;
 
   z-index: 2;
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
 }
 
 .artifact4 {
@@ -123,7 +102,7 @@
   height: 20px;
 
   z-index: 2;
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
 }
 
 .artifact5 {
@@ -133,7 +112,7 @@
   height: 20px;
 
   z-index: 2;
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
 }
 
 .artifact6 {
@@ -143,7 +122,7 @@
   height: 20px;
 
   z-index: 2;
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
 }
 
 .artifact7 {
@@ -153,18 +132,8 @@
   height: 20px;
 
   z-index: 2;
-  border: 1px solid #000;
+  border: 1px solid var(--gray-800);
 }
-
-// .artifact12 {
-//   background-color: #881337;
-
-//   width: 30px;
-//   height: 20px;
-
-//   z-index: 2;
-//   border: 1px solid #000;
-// }
 
 .controlContainer {
   margin-top: 5rem;
@@ -179,21 +148,21 @@
     font-size: 15px;
     border: none;
     background-color: #38bdf8;
-  
+
     text-transform: uppercase;
-  
+
     padding: 10px 15px;
     margin-left: 5px;
     border-radius: 5px;
-  
+
     font-family: Sora, sans-serif;
     font-size: 1.7rem;
     transition: filter 0.4s ease;
-  
+
     cursor: pointer;
 
     &:hover {
-      filter: brightness(0.8)
+      filter: brightness(0.8);
     }
   }
 
@@ -202,31 +171,49 @@
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+
+    
+    label {
+      font-size: 1.4rem;
+      margin-bottom: 0.4rem;
+      
+      color: var(--gray-200);
+    }
   }
+  
+  div {
+    position: relative;
 
-  label {
-    font-size: 1.4rem;
-    margin-bottom: 0.2rem;
-  }
+    select {
+      width: 100px;
+      appearance: none;
+      background-color: var(--zinc-700);
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: inherit;
+      line-height: inherit;
+      position: relative;
+      color: var(--gray-200);
 
-  select {
-    width: 100px;
-    // appearance: none;
-    // background-color: transparent;
-    // border: 1px solid #444;
-    // border-radius: 5px;
-    padding: 5px 10px;
-    // margin: 0;
-    // width: 15rem;
-    // font-family: inherit;
-    // font-size: inherit;
-    // cursor: inherit;
-    // line-height: inherit;
-    // outline: none;
-    // position: relative;
+      &::-ms-expand {
+        display: none;
+      }
+    }
 
-    // &::-ms-expand {
-    //   display: none;
-    // }
+    &::after {
+      content: '';
+
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+
+      border-left: 6px solid transparent;
+      border-right: 6px solid transparent;
+
+      border-top: 7px solid var(--gray-200);
+    }
   }
 }

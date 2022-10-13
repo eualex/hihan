@@ -5,7 +5,23 @@
 }
 
 :root {
-  --gray-100: #556767;
+  --zinc-900: #18181b;
+  --zinc-700: #374151;
+  --zinc-600: #475569;
+  --zinc-500: #71717a;
+  --gray-200: #e5e7eb;
+  --gray-300: #9ca3af;
+  --gray-500: #6b7280;
+  --gray-800: #1f2937;
+  --red-400: #f87171;
+  --rose-200: #fecdd3;
+  --rose-300: #fda4af;
+  --rose-400: #fb7185;
+  --rose-500: #f43f5e;
+  --rose-600: #e11d48;
+  --rose-700: #be123c;
+  --rose-800: #9f1239;
+  --rose-900: #881337;
 }
 
 html {
@@ -17,7 +33,7 @@ html {
 }
 
 body {
-  background-color: #ededed;
+  background-color: var(--zinc-900);
   width: 100%;
   height: 100vh;
   font-size: 1.6rem;

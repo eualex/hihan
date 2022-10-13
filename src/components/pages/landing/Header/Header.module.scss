@@ -1,6 +1,6 @@
 .container {
   width: 100%;
-  border-bottom: 1px solid #d2d2d2;
+  border-bottom: 1px solid var(--zinc-700);
 }
 
 .wrapper{
@@ -24,9 +24,10 @@
 
   a {
     text-decoration: none;
-    color: #27272a;
+    color: var(--gray-200);
     font-size: 1.5rem;
-  
+    font-weight: 600;
+    
     &:hover {
       text-decoration: underline;
     }
@@ -37,8 +38,9 @@
   background-color: transparent;
   border: none;
 
-  color: #f36565;
+  color: var(--red-400);
   font-size: 1.5rem;
+  font-weight: 600;
 
   &:hover {
     text-decoration: underline;
@@ -49,7 +51,7 @@
 .logo {
   a {
     text-decoration: none;
-    color: #000;
+    color: var(--gray-200);
     font-size: 3rem;
     font-family: Sora, sans-serif;
     font-weight: 900;
